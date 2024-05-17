@@ -13,13 +13,14 @@ body{
 
 header{
     background-color: #5300C8;
-    padding: 20px 0px;
+    height:60px;
     display: flex;
     justify-content: center;
+    align-items:center;
     color:white;
 }
 main{
-    height: 60%;
+    height: calc(100% - 264px);
 }
 #container__produtos{
     display: flex;
@@ -55,17 +56,21 @@ main{
     height: 48px;
     border-radius: 8px;
     border: 0;
-    
+    cursor:pointer;
 }
 
 #container_buttons > button:nth-child(1){
     background-color: #03318C;
     color: white;
 }
+
+#container_buttons > button:nth-child(2){
+    border:2px solid #03318C;
+}
 footer{
     background-color: #5300C8;
     color:white;
-    padding:64px;
+    height:150px;
     display: flex;
     flex-direction: column;
     justify-content: center;
