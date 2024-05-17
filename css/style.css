@@ -16,7 +16,7 @@ header{
     padding: 20px 0px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    color:white;
 }
 main{
     height: 60%;
@@ -36,7 +36,7 @@ main{
 }
 
 #form_inserir > input{
-    width: 392px;
+    width: 350px;
     height: 38px;
     border-radius: 20px;
     border: 2px solid black;
@@ -64,6 +64,7 @@ main{
 }
 footer{
     background-color: #5300C8;
+    color:white;
     padding:64px;
     display: flex;
     flex-direction: column;
