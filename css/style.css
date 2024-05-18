@@ -28,6 +28,10 @@ main{
     margin-top: 54px;
 }
 
+#container__card__produto{
+    margin-top: 50px;
+}
+
 /* form */
 #form_inserir{
     display: flex;
