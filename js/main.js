@@ -22,6 +22,9 @@ formulario.addEventListener('submit' , (e) => {
     // inserindo a div na estrutura html
     inserirProduto(cardProduto.img, cardProduto.nome, cardProduto.preco)
 
+    // Percorrendo cada img para adicionar a function de deletar
+    deleteCard()
+
     // Salvando na localStorage
     localStorage.setItem('produtos', JSON.stringify(produtos))
 
@@ -41,6 +44,8 @@ function loadProdutos(){
             inserirProduto(card.img, card.nome, card.preco)
         });
     }
+
+    deleteCard()
 }
 
 loadProdutos()
@@ -55,10 +60,37 @@ function inserirProduto(img, nome, preco){
 
             <div id="container__card__infos">
                 <p>${preco} R$</p>
-                <i data-lucide="trash-1"></i>
+                <img class="button__delete" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXgiPjxwYXRoIGQ9Ik0xOCA2IDYgMTgiLz48cGF0aCBkPSJtNiA2IDEyIDEyIi8+PC9zdmc+" />
             </div>
         </div>
     `
 
     container__card__produto.innerHTML += card    
 }
+
+// deleteCard
+function deleteCard(){
+    const button__delete = document.querySelectorAll('.button__delete')
+
+    button__delete.forEach(button => {
+        button.addEventListener('click', (e) => {
+    
+            // Pegando o card
+            const myCardSelect = e.target.parentElement.parentElement
+            console.log(myCardSelect)
+    
+            // Pegando o titulo do card
+            const titulo = myCardSelect.firstElementChild.nextElementSibling.textContent
+    
+            // Retornando um array de produtos diferente do titulo
+            const newProdutos = produtos.filter(card => card.nome !== titulo)
+    
+            // Salvando na localStorage a nova lista
+            localStorage.setItem('produtos', JSON.stringify(newProdutos))
+    
+            // removendo do container de cards
+            container__card__produto.removeChild(myCardSelect)
+        })
+    })
+}
+
