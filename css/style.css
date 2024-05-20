@@ -30,11 +30,16 @@ main{
 
 #container__card__produto{
     margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    overflow: scroll;
 }
 
-#card{
+.card{
+    background-color: #5300C8;
     border: 2px solid black;
-    height: 200px;
+    height: 210px;
     width: 180px;
     padding: 5px;
     border-radius: 10px;
@@ -43,9 +48,11 @@ main{
     align-items: center;
     gap: 15px;
     font-size: 10px;
+    color: white;
 }
 
-#card > img{
+.card > img{
+    background-color: white;
     height: 120px;
     width: 100%;
     object-fit: contain;
@@ -53,14 +60,14 @@ main{
     border-radius: 5px;
 }
 
-#card > div{
+.card > div{
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
 }
 
-#card > div > svg{
+.button__delete{
     cursor: pointer;
 }
 
@@ -75,6 +82,7 @@ main{
 #form_inserir > input{
     width: 350px;
     height: 38px;
+    font-size: 12px;
     border-radius: 20px;
     border: 2px solid black;
     padding-left: 10px;

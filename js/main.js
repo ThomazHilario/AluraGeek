@@ -41,6 +41,7 @@ function loadProdutos(){
         titulo__produto.textContent = 'Meus produtos:'
 
         produtos.forEach(card => {
+            
             inserirProduto(card.img, card.nome, card.preco)
         });
     }
@@ -53,14 +54,14 @@ loadProdutos()
 // inserir Produto
 function inserirProduto(img, nome, preco){
     let card = `
-        <div id="card">
+        <div class="card">
             <img src="${img}" alt="imagem do produto adicionado" />
 
             <p>${nome}</p>  
 
             <div id="container__card__infos">
                 <p>${preco} R$</p>
-                <img class="button__delete" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXgiPjxwYXRoIGQ9Ik0xOCA2IDYgMTgiLz48cGF0aCBkPSJtNiA2IDEyIDEyIi8+PC9zdmc+" />
+                <img class="button__delete" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS14Ij48cGF0aCBkPSJNMTggNiA2IDE4Ii8+PHBhdGggZD0ibTYgNiAxMiAxMiIvPjwvc3ZnPg==" />
             </div>
         </div>
     `
@@ -72,25 +73,38 @@ function inserirProduto(img, nome, preco){
 function deleteCard(){
     const button__delete = document.querySelectorAll('.button__delete')
 
-    button__delete.forEach(button => {
+    button__delete.forEach((button) => {
         button.addEventListener('click', (e) => {
     
             // Pegando o card
             const myCardSelect = e.target.parentElement.parentElement
-            console.log(myCardSelect)
-    
-            // Pegando o titulo do card
-            const titulo = myCardSelect.firstElementChild.nextElementSibling.textContent
-    
-            // Retornando um array de produtos diferente do titulo
-            const newProdutos = produtos.filter(card => card.nome !== titulo)
-    
-            // Salvando na localStorage a nova lista
-            localStorage.setItem('produtos', JSON.stringify(newProdutos))
-    
+
             // removendo do container de cards
             container__card__produto.removeChild(myCardSelect)
+
+            // Array para guardar os produtos restantes
+            let newProdutos = []
+
+            // Percorrendo os produtos restantes
+            document.querySelectorAll('.card').forEach((card) => {
+                // Criando um objeto para cada produto
+                let myProduto = {
+                    name:card.firstElementChild.nextElementSibling.textContent,
+                    preco:card.lastElementChild.firstElementChild,
+                    img:card.firstElementChild.src
+                }
+
+                // Jogando para dentro do array de newProdutos
+                newProdutos.push(myProduto)
+            })
+
+
+            // Salvando na localStorage a nova lista
+            localStorage.setItem('produtos', JSON.stringify(newProdutos))
+
+            
         })
     })
+
 }
 
