@@ -106,10 +106,14 @@ function deleteCard(){
             // Salvando na localStorage a nova lista
             localStorage.setItem('produtos', JSON.stringify(newProdutos))
 
-            
+
+            // Alterando o titulo do container
+            if(newProdutos.length < 1){
+                titulo__produto.textContent = 'Não há produtos!'
+            }
         })
     })
 
-    // Alterando o titulo
+    
 }
 
