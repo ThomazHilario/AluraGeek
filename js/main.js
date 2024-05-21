@@ -19,6 +19,10 @@ formulario.addEventListener('submit' , (e) => {
     // Adicionando o card dentro do array de produtos
     produtos.push(cardProduto)
 
+    if(produtos.length > 0){
+        titulo__produto.textContent = 'Meus Produtos:'
+    }
+
     // inserindo a div na estrutura html
     inserirProduto(cardProduto.img, cardProduto.nome, cardProduto.preco)
 
@@ -106,5 +110,6 @@ function deleteCard(){
         })
     })
 
+    // Alterando o titulo
 }
 

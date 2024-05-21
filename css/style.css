@@ -26,14 +26,30 @@ main{
     display: flex;
     justify-content: space-around;
     margin-top: 54px;
+    overflow: hidden;
 }
 
 #container__card__produto{
     margin-top: 20px;
     display: grid;
+    height: 500px;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
     overflow: scroll;
+}
+
+#container__card__produto::-webkit-scrollbar{
+    width: 16px;
+}
+
+#container__card__produto::-webkit-scrollbar-track{
+    background: #ffffff;
+}
+
+#container__card__produto::-webkit-scrollbar-thumb{
+    background-color: #8f54a0;
+    border-radius: 10px;
+    border: 3px solid #ffffff;
 }
 
 .card{
